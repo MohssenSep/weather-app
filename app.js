@@ -1,9 +1,15 @@
 // Add click event listener to the "Get Weather" button
 document.getElementById("btn").addEventListener("click", async () => {
   // Get the city name from the input field
-  const city = document.getElementById("city").value;
+  const city = document.getElementById("city").value.trim();
   // Get reference to the result display area
   const result = document.getElementById("result");
+
+  // Block requests when no city is provided
+  if (!city) {
+    result.innerHTML = "<div class='error'>Please enter a city name.</div>";
+    return;
+  }
 
   // Show "Loading..." message while fetching data
   result.innerHTML = "<div class='loading'>Loading...</div>";
